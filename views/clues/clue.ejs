@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= pageTitle %></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+	<!-- M -->
+	<main>
+		<section class="intro">
+			<h2>Welcome to the Treasure Hunt Game!</h2>
+			<p><%= desc %></p>
+			<p><%= riddle %></p>
+	<% if (clueNo == 3) { %>		
+		<picture>
+			<img src="/image/clue3.jpg" alt="image for clue3">
+		</picture>
+	<% } %>
+	<% if (clueNo !== 2 && clueNo !== 8) { %>	
+	<!-- A -->
+      <form action=<%= "./" + clueNo%> method="post">
+        <label for="answer">Enter your answer:</label>
+        <input type="text" id="answer" name="answer" required>
+        <button type="submit">Submit</button>
+      </form>
+	<% } %>
+      <p><%= errorMsg %></p>
+		</section>
+	</main>
+	<footer>
+		<p>&copy; 2023 Treasure Hunt Game. All rights reserved.</p>
+	</footer>
+	<!-- P -->
+</body>
+</html>
