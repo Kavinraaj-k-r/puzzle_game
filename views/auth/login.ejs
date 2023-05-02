@@ -6,38 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= pageTitle %> </title>
 
-    <link rel="stylesheet" href="/CSS/auth.css" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="/CSS/style.css" type="text/css">
+
+    <script src="https://kit.fontawesome.com/8283bf0b28.js" crossorigin="anonymous" defer></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous" defer></script>
 
 </head>
 <body>
 
-<div class="login-box">
-    <div class="box hbox" id="heading">
-        <div>
-            <h1>User log in</h1>
+<div class="container text-center">
+    <div class="row align-items-center">
+        <div class="intro_img col">
+            <img class="home_img" src="image/home.jpg" alt="image of a treasure">
         </div>
-    </div>
 
-    <div class="box">
-        <div>
-            <i class="fas fa-user-circle fa-3x"></i>
+      <div class="box col">
+        <div class="mb-4">
+            <h1 class="display-3 fw-bolder">User login</h1>
         </div>
 
         <form class="login" action="/login" method="POST">
-            <div class="input-group mb-3">
+            <div class="input-group mb-4">
                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
-                <input type="email" class="login form-control" name="username" placeholder="email">
+                <input type="email" class="form-control form-control-lg" id="username" name="username" placeholder="email">
             </div>
-            <div class="input-group mb-3">
+            <div class="input-group mb-4">
                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-lock"></i></span>
-                <input type="password" class="login form-control" name="password" placeholder="password" autocomplete="off" id="passErr">
+                <input type="password" class="form-control form-control-lg" name="password" placeholder="password" autocomplete="off">
             </div>
 
-            <button class="log_btn btn btn-outline-primary" type="submit">Login</button>
+            <button class="btn btn-primary btn-lg" type="submit">login</button>
         </form>
-        <div>
-            <a class="no-acc" href="/register">No account yet?</a>
-        </div>
+        
+        <p class="no-acc"><a href="/register">No account yet?</a></p>
 
     </div>
 </div>
