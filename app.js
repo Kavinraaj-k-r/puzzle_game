@@ -17,6 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const clueRouter = require('./routes/clueRoutes');
 const authRoutes = require("./routes/auth");
+const adminRoute = require('./routes/admin');
+
 const catchAsync = require("./utils/catchAsync");
 const AppError = require('./utils/appError');
 
@@ -43,6 +45,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use(authRoutes);
+
+app.use('/admin', adminRoute);
 
 app.use('/clue', clueRouter);
 

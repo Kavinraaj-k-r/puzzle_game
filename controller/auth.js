@@ -72,6 +72,8 @@ exports.postRegister = (req, res, next) => {
 };
 
 exports.postLogout = (req, res, next) => {
-    req.logout();
-    res.redirect("/login");
+    req.logout((err) => {
+        if (err) { return next(err); }
+        res.redirect('/login');
+      });
 }

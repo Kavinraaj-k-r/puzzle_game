@@ -13,7 +13,19 @@ const userSchema = new mongoose.Schema({
     clue_num: {
         type: Number,
         default: 1
-    }
+    },
+    role: {
+        type: Boolean,
+        default: false
+    },
+    start_time: {
+        type: Date,
+        default: null,
+    },
+    time_taken: [{
+        clue_num: Number,
+        time: Number,
+    }],
 });
 
 userSchema.plugin(passportLocalMongoose);

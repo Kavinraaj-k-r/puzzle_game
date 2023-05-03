@@ -1,9 +1,18 @@
 const catchAsync = require('../utils/catchAsync');
 
 const User = require('../model/user');
+const user = require('../model/user');
 
 exports.getClue1 = catchAsync(async (req, res, next) => {
-    res.render("clues/clue", {
+
+  User.findById(req.user.id).then(user => {
+    user.start_time = new Date();
+    user.save();
+  }).catch(error => {
+    console.error(error)
+  });
+
+  res.render("clues/clue", {
       pageTitle: "Level - 1",
       desc: "Your journey begins here. Are you ready to test your skills and embark on a thrilling adventure to uncover the world's most elusive treasure?",
       riddle: "The first clue is hidden in the source code of this webpage. Look carefully and you'll find what you seek.",
@@ -14,6 +23,14 @@ exports.getClue1 = catchAsync(async (req, res, next) => {
 });
 
 exports.getClue2 = catchAsync(async (req, res, next) => {
+  
+    User.findById(req.user.id).then(user => {
+      user.start_time = new Date();
+      user.save();
+    }).catch(error => {
+      console.error(error)
+    });
+
     res.render("clues/clue", {
         pageTitle: "Level - 2",
         desc: "You found the first clue, great job! Your next clue is a riddle. I can be cracked, made, told, and played. What am I?",
@@ -26,6 +43,14 @@ exports.getClue2 = catchAsync(async (req, res, next) => {
 
 // 14040
 exports.getClue3 = catchAsync(async (req, res, next) => {
+
+    User.findById(req.user.id).then(user => {
+      user.start_time = new Date();
+      user.save();
+    }).catch(error => {
+      console.error(error)
+    });
+
     res.render("clues/clue", {
         pageTitle: "Level - 3",
         desc: "You found the first clue, great job! Your next clue is in the image",
@@ -38,6 +63,14 @@ exports.getClue3 = catchAsync(async (req, res, next) => {
 
 // 2005
 exports.getClue4 = catchAsync(async (req, res, next) => {
+
+    User.findById(req.user.id).then(user => {
+      user.start_time = new Date();
+      user.save();
+    }).catch(error => {
+      console.error(error)
+    });
+
     res.render("clues/clue", {
         pageTitle: "Level - 4",
         desc: "Great job finding the hidden code! Now find the year the treasure was hidden by using the previous number in clue 1 and the following riddle number",
@@ -50,6 +83,14 @@ exports.getClue4 = catchAsync(async (req, res, next) => {
 
 // ADVENTURE
 exports.getClue5 = catchAsync(async (req, res, next) => {
+
+    User.findById(req.user.id).then(user => {
+      user.start_time = new Date();
+      user.save();
+    }).catch(error => {
+      console.error(error)
+    });
+
     res.render("clues/clue", {
         pageTitle: "Level - 5",
         desc: "",
@@ -62,6 +103,14 @@ exports.getClue5 = catchAsync(async (req, res, next) => {
 
 // THINK
 exports.getClue6 = catchAsync(async (req, res, next) => {
+
+  User.findById(req.user.id).then(user => {
+    user.start_time = new Date();
+    user.save();
+  }).catch(error => {
+    console.error(error)
+  });
+
     res.render("clues/clue", {
         pageTitle: "Level - 6",
         desc: "You're getting closer to the treasure!",
@@ -73,6 +122,14 @@ exports.getClue6 = catchAsync(async (req, res, next) => {
   });
 
 exports.getClue7 = catchAsync(async (req, res, next) => {
+
+  User.findById(req.user.id).then(user => {
+    user.start_time = new Date();
+    user.save();
+  }).catch(error => {
+    console.error(error)
+  });
+
     res.render("clues/clue", {
         pageTitle: "Level - 7",
         desc: "",
@@ -84,6 +141,14 @@ exports.getClue7 = catchAsync(async (req, res, next) => {
   });
 
 exports.getClue8 = catchAsync(async (req, res, next) => {
+
+  User.findById(req.user.id).then(user => {
+    user.start_time = new Date();
+    user.save();
+  }).catch(error => {
+    console.error(error)
+  });
+
     res.render("clues/clue", {
         pageTitle: "Level - 8",
         desc: "Congratulations! You have followed all the clues and made it to the final step. To find the treasure, you must decipher this riddle:",
@@ -95,6 +160,19 @@ exports.getClue8 = catchAsync(async (req, res, next) => {
   });
 
 exports.getTreasure = catchAsync(async (req, res, next) => {
+  
+  User.findById(req.user.id).then(user => {
+    
+    const startTime = user.start_time;
+    const timeTaken = new Date() - startTime;
+
+    user.time_taken.push({ clue_num: 8, time: timeTaken });
+
+    user.save();
+  }).catch(error => {
+    console.error(error)
+  });
+
   res.render("clues/treasure", {
     pageTitle: "congratulations",
   });
@@ -108,7 +186,12 @@ exports.checkClue1 = catchAsync(async (req, res, next) => {
       const userId = req.user.id;
 
       User.findById(userId).then(user => {
+          const startTime = user.start_time;
+          const timeTaken = new Date() - startTime;
+
           user.clue_num = 2;
+          user.time_taken.push({ clue_num: 1, time: timeTaken });
+
           user.save();
         }).catch(error => {
           console.error(error)
@@ -132,7 +215,12 @@ exports.checkClue2 = catchAsync(async (req, res, next) => {
     const userId = req.user.id;
 
     User.findById(userId).then(user => {
+        const startTime = user.start_time;
+        const timeTaken = new Date() - startTime;
+
         user.clue_num = 3;
+        user.time_taken.push({ clue_num: 2, time: timeTaken });
+
         user.save();
       }).catch(error => {
         console.error(error)
@@ -149,7 +237,12 @@ exports.checkClue3 = catchAsync(async (req, res, next) => {
     const userId = req.user.id;
 
     User.findById(userId).then(user => {
-        user.clue_num = 4;
+      const startTime = user.start_time;
+      const timeTaken = new Date() - startTime;
+
+      user.clue_num = 4;
+      user.time_taken.push({ clue_num: 3, time: timeTaken });
+
         user.save();
       }).catch(error => {
         console.error(error)
@@ -177,7 +270,12 @@ exports.checkClue4 = catchAsync(async (req, res, next) => {
     const userId = req.user.id;
 
     User.findById(userId).then(user => {
-        user.clue_num = 5;
+      const startTime = user.start_time;
+      const timeTaken = new Date() - startTime;
+
+      user.clue_num = 5;
+      user.time_taken.push({ clue_num: 4, time: timeTaken });
+
         user.save();
       }).catch(error => {
         console.error(error)
@@ -205,7 +303,12 @@ exports.checkClue5 = catchAsync(async (req, res, next) => {
     const userId = req.user.id;
 
     User.findById(userId).then(user => {
-        user.clue_num = 6;
+      const startTime = user.start_time;
+      const timeTaken = new Date() - startTime;
+
+      user.clue_num = 6;
+      user.time_taken.push({ clue_num: 5, time: timeTaken });
+
         user.save();
       }).catch(error => {
         console.error(error)
@@ -233,7 +336,12 @@ exports.checkClue6 = catchAsync(async (req, res, next) => {
     const userId = req.user.id;
 
     User.findById(userId).then(user => {
-        user.clue_num = 7;
+      const startTime = user.start_time;
+      const timeTaken = new Date() - startTime;
+
+      user.clue_num = 7;
+      user.time_taken.push({ clue_num: 6, time: timeTaken });
+
         user.save();
       }).catch(error => {
         console.error(error)
@@ -261,7 +369,12 @@ exports.checkClue7 = catchAsync(async (req, res, next) => {
     const userId = req.user.id;
 
     User.findById(userId).then(user => {
-        user.clue_num = 8;
+      const startTime = user.start_time;
+      const timeTaken = new Date() - startTime;
+
+      user.clue_num = 8;
+      user.time_taken.push({ clue_num: 7, time: timeTaken });
+
         user.save();
       }).catch(error => {
         console.error(error)
