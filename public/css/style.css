@@ -100,6 +100,13 @@ img {
     color: rgb(40, 56, 79, 0.5);
 }
 
+.wrng_ans {
+    color: red;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
 @media only screen and (max-width: 80rem) {
 
     html {

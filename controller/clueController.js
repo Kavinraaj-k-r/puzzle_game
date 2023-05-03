@@ -122,6 +122,7 @@ exports.checkClue1 = catchAsync(async (req, res, next) => {
         pageTitle: "Level - 1",
         desc: "Your journey begins here. Are you ready to test your skills and embark on a thrilling adventure to uncover the world's most elusive treasure?",
         riddle: "The first clue is hidden in the source code of this webpage. Look carefully and you'll find what you seek.",
+        hint: "Press ctrl + u",
         clueNo: 1,
         errorMsg: errorMsg
     });
@@ -162,6 +163,7 @@ exports.checkClue3 = catchAsync(async (req, res, next) => {
     pageTitle: "Level - 3",
     desc: "You found the first clue, great job! Your next clue is in the image",
     riddle: "This clue requires the player to carefully examine an image for hidden numbers. The player needs to identify the least, highest and count numbers in the image and combine them to form a code. Once the player has found the code, they can proceed to the next clue.",
+    hint: "Look the picture carefully",
     clueNo: 3,
     errorMsg: errorMsg
   });
@@ -189,6 +191,7 @@ exports.checkClue4 = catchAsync(async (req, res, next) => {
     pageTitle: "Level - 4",
     desc: "Great job finding the hidden code! Now find the year the treasure was hidden by using the previous number in clue 1 and the following riddle number",
     riddle: "The riddle:I am an odd number. Take away a letter, and I become even. What number am I? (You need to use the previous number in clue 1 and this number to find a year the tressure is hide.",
+    hint: "Think of arithmatic operations",
     clueNo: 4,
     errorMsg: errorMsg
   });
@@ -216,6 +219,7 @@ exports.checkClue5 = catchAsync(async (req, res, next) => {
     pageTitle: "Level - 5",
     desc: "",
     riddle: "You're making great progress! For the next clue, you'll need to solve a puzzle. Arrange the jumbled letters to form a word: 'DVENATRUE'.",
+    hint: "Related to treasure hunt",
     clueNo: 5,
     errorMsg: errorMsg
   });
@@ -243,6 +247,7 @@ exports.checkClue6 = catchAsync(async (req, res, next) => {
     pageTitle: "Level - 6",
     desc: "You're getting closer to the treasure!",
     riddle: "The next clue is hidden within a famous speech by a tech icon. Look for the words that encourage you to use your imagination and think outside the box. The answer to this clue is a single word that relates to our treasure hunt game.",
+    hint: "Hear the speech again and again",
     clueNo: 6,
     errorMsg: errorMsg
   });
@@ -270,6 +275,7 @@ exports.checkClue7 = catchAsync(async (req, res, next) => {
     pageTitle: "Level - 7",
     desc: "",
     riddle: "Congratulations on making it this far! For the next clue, you'll need to decipher this message 'AHWSRNECO' with the key 3 1 2",
+    hint: "Use transposition cipher to solve this",
     clueNo: 7,
     errorMsg: errorMsg
   });
