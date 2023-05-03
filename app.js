@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const clueRouter = require('./routes/clueRoutes');
 const authRoutes = require("./routes/auth");
 const catchAsync = require("./utils/catchAsync");
+const AppError = require('./utils/appError');
 
 app.set("view engine", "ejs");
 app.set('views', path.join(__dirname, 'views'));
@@ -44,6 +45,10 @@ passport.deserializeUser(User.deserializeUser());
 app.use(authRoutes);
 
 app.use('/clue', clueRouter);
+
+app.all('*', (req, res, next) => {
+  next(new AppError(`404 Page not found`, 404));
+});
 
 const DB = "mongodb://localhost:27017/puzzle_game";
 const cloudUrl = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.p5qv8.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true&w=majority`;

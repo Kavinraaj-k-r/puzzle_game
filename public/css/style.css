@@ -99,3 +99,18 @@ img {
 .treasure h1 {
     color: rgb(40, 56, 79, 0.5);
 }
+
+@media only screen and (max-width: 80rem) {
+
+    html {
+      font-size: 50%;  
+    }
+
+    .intro_img {
+        display: none;
+    }
+
+    .navbar-nav {
+        flex-direction: row;
+    }
+}
